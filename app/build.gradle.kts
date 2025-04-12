@@ -1,13 +1,23 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
 }
 
+
 android {
     namespace = "com.example.carecycle"
     compileSdk = 35
+    val localProperties = Properties().apply {
+        load(rootProject.file("local.properties").inputStream())
+    }
 
+    buildFeatures{
+        viewBinding=true
+        buildConfig = true
+    }
     defaultConfig {
         applicationId = "com.example.carecycle"
         minSdk = 26
@@ -16,8 +26,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 
+    // Define keys
+    buildConfigField("String", "MAPS_API_KEY", "\"${localProperties["MAPS_API_KEY"]}\"")
+    buildConfigField("String", "IMGBB_API_KEY", "\"${localProperties["IMGBB_API_KEY"]}\"")
+}
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -34,9 +47,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures{
-        viewBinding=true
-    }
+
+
+
 }
 
 dependencies {
@@ -66,6 +79,12 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
+
+    // Google Maps
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+    implementation ("com.google.android.gms:play-services-location:21.2.0")
+
+
 
 
 

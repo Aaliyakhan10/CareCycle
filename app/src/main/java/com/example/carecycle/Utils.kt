@@ -12,6 +12,7 @@ import com.example.carecycle.api.RetrofitInstance
 import com.example.carecycle.model.ImgBBResponse
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.marsad.stylishdialogs.StylishAlertDialog
 import com.shashank.sony.fancytoastlib.FancyToast
 import kotlinx.coroutines.CoroutineScope
@@ -70,6 +71,26 @@ object Utils {
 
 
     }
+    private lateinit var firebasereference:DatabaseReference
+    fun userInfo(callback: (String, String) -> Unit) {
+        val uid = getCurrentUsersId()
+        val firebaseDatabase = FirebaseDatabase.getInstance().getReference("AllUsers").child("user")
+
+        firebaseDatabase.child(uid).get().addOnSuccessListener {
+            if (it.exists()) {
+                val name = it.child("Name").value.toString()
+
+
+
+                val add=it.child("Add").value.toString()
+                callback(name,add)
+            } else {
+                callback("People","")
+            }
+        }.addOnFailureListener {
+            callback("People","")
+        }
+    }
 
     fun warningDialog(context: Context, message: String, yesButtonText: String) {
         StylishAlertDialog(context, StylishAlertDialog.WARNING)
@@ -104,7 +125,7 @@ object Utils {
     fun successToast(context: Context, message: String) {
         FancyToast.makeText(context, message, FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
     }
-    const val IMG_BB_API_KEY = "eb3102cdc9aeacb4d68eb34e6800d693"
+    const val IMG_BB_API_KEY = BuildConfig.MAPS_API_KEY
 
     fun getRealPathFromURI(context: Context, uri: Uri): String {
         val cursor = context.contentResolver.query(uri, null, null, null, null)
@@ -115,6 +136,9 @@ object Utils {
         return path ?: ""
     }
 
+    fun getCurrentUsersId():String{
+        return FirebaseAuth.getInstance().currentUser!!.uid
+    }
 
 }
 
