@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.LoginFragment">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Email Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorSecondary"
+                app:hintTextColor="@color/colorSecondary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Email Address"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/textDark"
+                    android:textColorHint="@color/colorSecondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Password Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorSecondary"
+                app:hintTextColor="@color/colorSecondary"
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout"
+                app:layout_constraintStart_toStartOf="@id/textInputLayout"
+                app:layout_constraintEnd_toEndOf="@id/textInputLayout"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/textDark"
+                    android:textColorHint="@color/colorSecondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Login Button -->
+            <Button
+                android:id="@+id/loginBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textSize="18sp"
+                android:textColor="@color/backgroundLight"
+                android:backgroundTint="@color/colorPrimary"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout2"
+                app:layout_constraintStart_toStartOf="@id/textInputLayout2"
+                app:layout_constraintEnd_toEndOf="@id/textInputLayout2" />
+
+            <!-- Reset Password Text -->
+            <TextView
+                android:id="@+id/resetTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset Password"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/loginBtn"
+                app:layout_constraintStart_toStartOf="@id/loginBtn"
+                app:layout_constraintEnd_toEndOf="@id/loginBtn"
+                app:layout_constraintHorizontal_bias="0.5" />
+
+            <!-- Bottom SignIn Navigation -->
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp"
+                app:layout_constraintTop_toBottomOf="@id/resetTv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't have an account?"
+                    android:textSize="16sp"
+                    android:textColor="@color/textDark" />
+
+                <TextView
+                    android:id="@+id/singin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Sign In"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>

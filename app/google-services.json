@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "568621529140",
+    "project_id": "carecycle-f9edd",
+    "storage_bucket": "carecycle-f9edd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568621529140:android:9fe7c45669783857507261",
+        "android_client_info": {
+          "package_name": "com.example.carecycle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT2ATaj_pvAcablswgQlbbIJt3UQPGW8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

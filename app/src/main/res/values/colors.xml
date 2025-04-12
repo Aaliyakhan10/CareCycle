@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- Primary Color -->
+    <color name="colorPrimary">#006D72</color>
+    <color name="colorPrimaryComplement">#722D00</color>
+
+    <!-- Secondary Color -->
+    <color name="colorSecondary">#00C5CC</color>
+    <color name="colorSecondaryComplement">#CC2600</color>
+
+    <!-- Tertiary Color -->
+    <color name="colorTertiary">#F89F2F</color>
+    <color name="colorTertiaryComplement">#2F8EF8</color>
+
+    <!-- Accent / Optional UI highlight -->
+    <color name="colorAccent">#7AD3D3</color>
+    <color name="colorAccentComplement">#D37A7A</color>
+
+    <!-- Background and Text Suggestions -->
+    <color name="backgroundLight">#FFFFFF</color>
+    <color name="textDark">#212121</color>
+</resources>
