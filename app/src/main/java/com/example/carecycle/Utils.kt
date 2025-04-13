@@ -111,7 +111,7 @@ object Utils {
     fun successToast(context: Context, message: String) {
         FancyToast.makeText(context, message, FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
     }
-    const val IMG_BB_API_KEY = "eb3102cdc9aeacb4d68eb34e6800d693"
+    const val IMG_BB_API_KEY = "API_KEY"
 
     fun getRealPathFromURI(context: Context, uri: Uri): String {
         val cursor = context.contentResolver.query(uri, null, null, null, null)
