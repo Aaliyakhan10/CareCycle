@@ -38,6 +38,45 @@
 4. Expired or near-expiry items are scheduled for weekly pickups.
 5. Donors earn coins (15 for food donations + 5 per plate delivered).
 6. Coins can be exchanged for brand coupons or vouchers.
+Got it! Here's how you can update your `README.md` to:
+
+
+
+---
+
+### 📽️ Demo Video
+
+Watch the demo:  
+👉 [**Click here to watch the video**](https://drive.google.com/drive/folders/1Vo29O6sdEPWe3i_FPA5NgNQCcPrWmcVF)
+
+---
+
+### 📊 Project Presentation
+
+View the project slides:  
+👉 [**Click here to view the PPT**](https://drive.google.com/drive/folders/1Vo29O6sdEPWe3i_FPA5NgNQCcPrWmcVF)
+
+---
+
+### 📥 Clone the Project from GitHub
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+---
+
+### 🔑 Update the `imgBB` API Key
+
+1. Open the file:  
+   `app/src/main/java/com/example/carecycle/Utils.kt`
+
+2. Find the line with the placeholder API key and replace it like this:
+
+```kotlin
+const val IMGBB_API_KEY = "your_actual_imgbb_api_key_here"
+```
 
 ---
 
