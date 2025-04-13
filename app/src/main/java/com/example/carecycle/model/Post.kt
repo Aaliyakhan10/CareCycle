@@ -1,11 +1,12 @@
 package com.example.carecycle.model
-
 data class Post(
-    val id: String = "",
-    val title: String = "",
-    var numOfPlates: Int=0,
-    var delivering: Boolean=false,
-    val lat: Double = 0.0,
-    val lng: Double = 0.0,
-    val geohash: String = ""
+    var id: String = "",
+    val userId: String = "",
+    val foodName: String = "",
+    val description: String = "",
+    var platesAvailable: Int = 0,
+    val geohash: String = "",
+    val latitude: Double = 0.0,
+    val longitude: Double = 0.0,
+    var claimants: MutableMap<String, Long> = mutableMapOf()
 )

@@ -66,7 +66,6 @@ class ExpiredItemFragment : Fragment() {
 
             var expiryDate: String = ""
 
-            // Open DatePicker when clicked
             layoutExpiredBinding.editTextExpiryDate.setOnClickListener {
                 val calendar = Calendar.getInstance()
                 val year = calendar.get(Calendar.YEAR)
