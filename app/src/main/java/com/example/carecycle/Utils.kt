@@ -3,34 +3,18 @@ package com.example.carecycle
 import android.app.AlertDialog
 import android.app.Fragment
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
-import com.example.carecycle.api.ImgBBService
-import com.example.carecycle.api.RetrofitInstance
-import com.example.carecycle.model.ImgBBResponse
+import androidx.core.content.ContextCompat.startActivity
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.marsad.stylishdialogs.StylishAlertDialog
 import com.shashank.sony.fancytoastlib.FancyToast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
-
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.io.File
 
 object Utils {
     private lateinit var firebaseDatabase: DatabaseReference
@@ -50,6 +34,7 @@ object Utils {
         return FirebaseAuth.getInstance().currentUser?.uid.toString()
 
     }
+
 
     private lateinit var pDialog: StylishAlertDialog
     fun progressDialog(context: Context, message: String) {
@@ -72,23 +57,24 @@ object Utils {
 
     }
     private lateinit var firebasereference:DatabaseReference
-    fun userInfo(callback: (String, String) -> Unit) {
+    fun userInfo(callback: (String, String, String, String, String, String) -> Unit) {
         val uid = getCurrentUsersId()
-        val firebaseDatabase = FirebaseDatabase.getInstance().getReference("AllUsers").child("user")
+        val firebaseDatabase = FirebaseDatabase.getInstance().getReference("users")
 
         firebaseDatabase.child(uid).get().addOnSuccessListener {
             if (it.exists()) {
-                val name = it.child("Name").value.toString()
-
-
-
-                val add=it.child("Add").value.toString()
-                callback(name,add)
+                val name = it.child("name").value.toString()
+                val address=it.child("address").value.toString()
+                val email=it.child("email").value.toString()
+                val usertype=it.child("userType").value.toString()
+                val coin=it.child("coin").value.toString()
+                val imageurl=it.child("profileImageUrl").value.toString()
+                callback(name,address,email,usertype,coin,imageurl)
             } else {
-                callback("People","")
+                callback("People","","","","","")
             }
         }.addOnFailureListener {
-            callback("People","")
+            callback("People","","","","","")
         }
     }
 
@@ -125,7 +111,7 @@ object Utils {
     fun successToast(context: Context, message: String) {
         FancyToast.makeText(context, message, FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
     }
-    const val IMG_BB_API_KEY = BuildConfig.MAPS_API_KEY
+    const val IMG_BB_API_KEY = "eb3102cdc9aeacb4d68eb34e6800d693"
 
     fun getRealPathFromURI(context: Context, uri: Uri): String {
         val cursor = context.contentResolver.query(uri, null, null, null, null)

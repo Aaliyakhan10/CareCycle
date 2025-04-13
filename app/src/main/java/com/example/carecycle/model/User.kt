@@ -6,6 +6,8 @@ data class User(
     var userType: String,
     var uid: String,
     var address: String,
-    var profileImageUrl: String
+    var profileImageUrl: String,
+    var coins:Int
+
 
 )

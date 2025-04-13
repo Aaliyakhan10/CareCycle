@@ -2,15 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/foodFragment"
-        android:title="Home"
+        android:title="Food Donation"
         android:icon="@drawable/baseline_food_bank_24" />
 
 
 
     <item
         android:id="@+id/expiredItemFragment"
-        android:title="Settings"
+        android:title="Expired Item"
         android:icon="@drawable/baseline_no_food_24" />
+    <item
+        android:id="@+id/voucherFragment"
+        android:title="Vouchers"
+        android:icon="@drawable/baseline_discount_24" />
     <item
         android:id="@+id/accountFragment"
         android:title="Profile"

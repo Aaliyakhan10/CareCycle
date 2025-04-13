@@ -80,9 +80,13 @@ dependencies {
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
 
-    // Google Maps
-    implementation ("com.google.android.gms:play-services-maps:18.2.0")
-    implementation ("com.google.android.gms:play-services-location:21.2.0")
+    implementation("org.osmdroid:osmdroid-android:6.1.16")
+    implementation("com.firebase:geofire-android-common:3.2.0")
+    implementation("com.firebase:geofire-android:3.2.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation("com.google.firebase:firebase-database-ktx")
+
+    implementation("com.google.android.gms:play-services-location:21.2.0")
 
 
 

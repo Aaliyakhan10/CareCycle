@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph"
+    app:startDestination="@id/foodFragment">
+
+    <fragment
+        android:id="@+id/foodFragment"
+        android:name="com.example.carecycle.fragments.FoodFragment"
+        android:label="fragment_food"
+        tools:layout="@layout/fragment_food" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.carecycle.fragments.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/expiredItemFragment"
+        android:name="com.example.carecycle.fragments.ExpiredItemFragment"
+        android:label="fragment_expired_item"
+        tools:layout="@layout/fragment_expired_item" />
+    <fragment
+        android:id="@+id/voucherFragment"
+        android:name="com.example.carecycle.fragments.VoucherFragment"
+        android:label="fragment_voucher"
+        tools:layout="@layout/fragment_voucher" />
+</navigation>

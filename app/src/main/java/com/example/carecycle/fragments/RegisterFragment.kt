@@ -148,7 +148,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener { authResult ->
                 val uid = authResult.user?.uid ?: return@addOnSuccessListener
-                val user = User(name=name, email=email, uid=uid, address = address, userType = userType, profileImageUrl = imageUrl)
+                val user = User(name=name, email=email, uid=uid, address = address, userType = userType, profileImageUrl = imageUrl, coins = 0)
 
                 FirebaseDatabase.getInstance().reference
                     .child("users").child(uid)
