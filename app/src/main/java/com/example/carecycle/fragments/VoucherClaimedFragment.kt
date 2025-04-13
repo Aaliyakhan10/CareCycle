@@ -56,7 +56,10 @@ class VoucherClaimedFragment : Fragment() {
                 vouchers.clear()
                 for (snap in snapshot.children) {
                     val voucher = snap.getValue(Voucher::class.java)
-                    voucher?.let { vouchers.add(it) }
+                    voucher?.let {
+
+                        vouchers.add(it)
+                    }
                 }
                 voucherAdapter.notifyDataSetChanged()
             }

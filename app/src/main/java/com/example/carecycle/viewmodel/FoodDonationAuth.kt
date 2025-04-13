@@ -101,7 +101,8 @@ class FoodDonationAuth : ViewModel() {
                     val item = childSnapshot.getValue(Post::class.java)
                     item?.let { itemList.add(it) }
                 }
-                listLiveData.value = itemList
+                val list=itemList.reversed().toMutableList()
+                listLiveData.value = list
             }
 
             override fun onCancelled(error: DatabaseError) {

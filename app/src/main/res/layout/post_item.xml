@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="4dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@color/backgroundLight">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,54 +17,83 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <ImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="48dp"
-                android:layout_height="48dp" />
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:scaleType="centerCrop"
+                android:backgroundTint="@color/colorAccent"
+                android:background="@drawable/circle_background" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:orientation="vertical"
-                android:padding="4dp">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textDark"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/typeofUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:textColor="@color/colorPrimaryComplement"
+                    android:textSize="14sp" />
             </LinearLayout>
-
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/namefood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/textDark"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
 
         <TextView
             android:id="@+id/tvPlates"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTertiary"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
 
         <Button
             android:id="@+id/btnClaim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get this food" />
+            android:text="Get this food"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:id="@+id/tvClaimants"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="View Claimants" />
+            android:text="View Claimants"
+            android:textColor="@color/colorSecondary"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:layout_marginTop="6dp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

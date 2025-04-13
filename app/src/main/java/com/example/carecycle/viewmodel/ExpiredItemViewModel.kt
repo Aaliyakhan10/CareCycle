@@ -38,8 +38,8 @@ class ExpiredItemViewModel: ViewModel() {
                     val item = childSnapshot.getValue(ExpiredPostData::class.java)
                     item?.let { itemList.add(it) }
                 }
-
-                expiredItemListLiveData.value = itemList
+                val list=itemList.reversed().toMutableList()
+                expiredItemListLiveData.value = list
             }
 
             override fun onCancelled(error: DatabaseError) {

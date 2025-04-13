@@ -26,6 +26,7 @@ class PostAdapter(
         val tvClaimants: TextView = view.findViewById(R.id.tvClaimants)
         val ivProfile: ImageView = view.findViewById(R.id.ivProfile)
         val typeOfuser: TextView=view.findViewById(R.id.typeofUser)
+        val foodname: TextView=view.findViewById(R.id.namefood)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -56,7 +57,7 @@ class PostAdapter(
         holder.tvPlates.text = "Plates available: ${post.platesAvailable}"
         holder.tvClaimants.text = "${post.claimants.size} claimants"
         holder.btnClaim.isEnabled = post.platesAvailable > 0
-
+        holder.foodname.text=post.foodName
         holder.btnClaim.setOnClickListener {
 
             Utils.successToast(
