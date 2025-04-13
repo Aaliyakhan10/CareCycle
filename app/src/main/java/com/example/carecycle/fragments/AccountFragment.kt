@@ -1,13 +1,16 @@
 package com.example.carecycle.fragments
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.carecycle.LoginActivity
+import com.example.carecycle.R
 import com.example.carecycle.Utils
 import com.example.carecycle.databinding.FragmentAccountBinding
 import com.marsad.stylishdialogs.StylishAlertDialog
@@ -35,6 +38,9 @@ class AccountFragment : Fragment() {
                 )
                 .show()
         }
+        binding.VoucherButton.setOnClickListener {
+            findNavController().navigate(R.id.action_accountFragment_to_voucherClaimedFragment)
+        }
         return binding.root
     }
 
@@ -44,7 +50,7 @@ class AccountFragment : Fragment() {
             binding.userTypeText.text=usertype
             binding.addressText.text=address
             binding.emailText.text=email
-            binding.coinsText.text=coin
+            binding.coinsText.text= "Coins: $coin"
             Glide.with(this).load(imgUrl).circleCrop().into(binding.profileImage)
         }
     }

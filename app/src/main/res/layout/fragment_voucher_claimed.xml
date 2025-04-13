@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.VoucherFragment">
+    tools:context=".fragments.VoucherClaimedFragment">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/voucherLayout"
+        android:id="@+id/voucherClaimedLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -13,16 +14,16 @@
         android:background="@color/white">
 
         <TextView
-            android:id="@+id/tvVoucherTitle"
+            android:id="@+id/tvClaimedVoucherTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Available Vouchers"
+            android:text="Claimed Vouchers"
             android:textSize="20sp"
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/voucherRecyclerView"
+            android:id="@+id/claimedVoucherRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"

@@ -1,7 +1,9 @@
 package com.example.carecycle.fragments
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -9,6 +11,8 @@ import android.util.Log
 import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.carecycle.R
@@ -50,10 +54,35 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         binding.loginin.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
+        checkStoragePermission()
     }
 
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (!isGranted) {
+            Toast.makeText(requireContext(), "Storage permission required", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // Call this before performing file operations
+    private fun checkStoragePermission() {
+        when {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                // Permission already granted
+            }
+            else -> {
+                requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+        }
+    }
     private fun openGallery() {
+        checkStoragePermission()
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "image/*"
         startActivityForResult(intent, PICK_IMAGE_REQUEST)
     }
 
@@ -112,10 +141,24 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     private fun uploadImageToImgBB(uri: Uri, callback: (String?) -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val imageFile = File(Utils.getRealPathFromURI(requireContext(), uri))
-                val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), imageFile)
-                val part = MultipartBody.Part.createFormData("image", imageFile.name, requestBody)
+                val contentResolver = requireContext().contentResolver
+                val inputStream = contentResolver.openInputStream(uri)
+                val requestBody = inputStream?.readBytes()?.let {
+                    RequestBody.create("image/*".toMediaTypeOrNull(), it)
+                }
+
+                val part = requestBody?.let {
+                    MultipartBody.Part.createFormData("image", "profile.jpg", it)
+                }
+
                 val apiKey = RequestBody.create("text/plain".toMediaTypeOrNull(), Utils.IMG_BB_API_KEY)
+
+                if (part == null) {
+                    withContext(Dispatchers.Main) {
+                        callback(null)
+                    }
+                    return@launch
+                }
 
                 val service = RetrofitInstance.getRetrofitInstance().create(ImgBBService::class.java)
                 val response = service.uploadImage(part, apiKey)

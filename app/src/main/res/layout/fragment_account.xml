@@ -95,8 +95,16 @@
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_marginBottom="16dp"/>
+                <Button
+                    android:id="@+id/VoucherButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Claimed Voucher"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textAllCaps="false"
+                    android:padding="12dp"/>
 
-                <!-- Logout Button -->
                 <Button
                     android:id="@+id/logoutButton"
                     android:layout_width="match_parent"

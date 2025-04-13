@@ -14,7 +14,11 @@
         android:id="@+id/accountFragment"
         android:name="com.example.carecycle.fragments.AccountFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_voucherClaimedFragment"
+            app:destination="@id/voucherClaimedFragment" />
+    </fragment>
     <fragment
         android:id="@+id/expiredItemFragment"
         android:name="com.example.carecycle.fragments.ExpiredItemFragment"
@@ -25,4 +29,9 @@
         android:name="com.example.carecycle.fragments.VoucherFragment"
         android:label="fragment_voucher"
         tools:layout="@layout/fragment_voucher" />
+    <fragment
+        android:id="@+id/voucherClaimedFragment"
+        android:name="com.example.carecycle.fragments.VoucherClaimedFragment"
+        android:label="fragment_voucher_claimed"
+        tools:layout="@layout/fragment_voucher_claimed" />
 </navigation>

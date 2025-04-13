@@ -67,7 +67,7 @@ object Utils {
                 val address=it.child("address").value.toString()
                 val email=it.child("email").value.toString()
                 val usertype=it.child("userType").value.toString()
-                val coin=it.child("coin").value.toString()
+                val coin=it.child("coins").value.toString()
                 val imageurl=it.child("profileImageUrl").value.toString()
                 callback(name,address,email,usertype,coin,imageurl)
             } else {
